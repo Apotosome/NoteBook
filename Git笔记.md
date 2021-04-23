@@ -55,7 +55,7 @@
 
 - CentOS
 
-<img src="/Users/jin/Library/Application Support/typora-user-images/image-20210420234401642.png" alt="image-20210420234401642" style="zoom: 50%;" />
+  ![image-20210420234253759](Git笔记.assets/image-20210420234253759.png)
 
 - MacOS
 
@@ -66,7 +66,7 @@
 
 ### GIt安装部署
 
-1. ![image-20210420234656411](/Users/jin/Library/Application Support/typora-user-images/image-20210420234656411.png)
+1. ![image-20210420234656411](Git笔记.assets/image-20210420234656411.png)
 
 2. 创建一个全局用户名、全局邮箱作为配置信息
 
@@ -134,7 +134,7 @@
 
 ##创建数据-提交数据
 
-![image-20210422101548471](/Users/jin/Library/Application Support/typora-user-images/image-20210422101548471.png)
+<img src="Git笔记.assets/image-20210422101548471.png" alt="image-20210422101548471" style="zoom: 33%;" />
 
 ## GIt基础命令
 
@@ -288,7 +288,7 @@ rm 'c'
 
 ​		**分支**即是平行空间,假设你在为某个手机系统研发拍照功能,代码已经完成了80%,但如果将这不完整的代码直接提交到git仓库中,又有可能影响到其他人的工作,此时我们便可以在该软件的项目之上创建一个名叫”拍照功能”的分支,这种分支只会属于你自己,而其他人看不到,等代码编写完成后再与原来的项目主分支合并下即可,这样即能保证代码不丢失,又不影响其他人的工作。
 
-![image-20210422135553437](/Users/jin/Library/Application Support/typora-user-images/image-20210422135553437.png)
+![image-20210422135553437](Git笔记.assets/image-20210422135553437.png)
 
 ​		一般在实际的项目开发中,我们要尽量保证 masters分支是非常稳定的,仅用于发布新版本,平时不要随便直接修改里面的数据文件。
 
@@ -332,7 +332,7 @@ rm 'c'
 
 ### 操纵分支
 
-![image-20210422151330684](/Users/jin/Library/Application Support/typora-user-images/image-20210422151330684.png)
+![image-20210422151330684](Git笔记.assets/image-20210422151330684.png)
 
 ```bash
 ## Step1.
@@ -366,7 +366,7 @@ rm 'c'
 			c8dc512 (HEAD, master) add newfile master-eee
 ```
 
-![image-20210422152424990](/Users/jin/Library/Application Support/typora-user-images/image-20210422152424990.png)
+![image-20210422152424990](Git笔记.assets/image-20210422152424990.png)
 
 
 
@@ -388,7 +388,7 @@ rm 'c'
 			Deleted branch testing (was 3b3844f).
 ```
 
-![image-20210422152518833](/Users/jin/Library/Application Support/typora-user-images/image-20210422152518833.png)
+![image-20210422152518833](Git笔记.assets/image-20210422152518833.png)
 
 
 
@@ -428,7 +428,7 @@ rm 'c'
 			[master 99f8d5c] resolve marge conflict
 ```
 
-![image-20210422170141404](/Users/jin/Library/Application Support/typora-user-images/image-20210422170141404.png)
+![image-20210422170141404](Git笔记.assets/image-20210422170141404.png)
 
 
 
@@ -496,7 +496,7 @@ rm 'c'
 
    复制到GitHub设置里的SSH keys
 
-   ![image-20210422231359118](/Users/jin/Library/Application Support/typora-user-images/image-20210422231359118.png)
+   ![image-20210422231359118](Git笔记.assets/image-20210422231359118.png)
 
 3. 创建项目 
 
@@ -504,7 +504,9 @@ rm 'c'
 
    
 
-4. 推送新代码到 github![image-20210422230738585](/Users/jin/Library/Application Support/typora-user-images/image-20210422230738585.png)
+4. 推送新代码到 github
+
+   ![image-20210422230738585](Git笔记.assets/image-20210422230738585.png)
 
    ```bash
    [root @ sora-localhost ~/data]  git remote add origin git@github.com:Apotosome/git_data.git
@@ -519,13 +521,9 @@ rm 'c'
        Branch master set up to track remote branch master from origin.
    ```
 
-   ![image-20210423092654373](/Users/jin/Library/Application Support/typora-user-images/image-20210423092654373.png)
-
-   
-
 5. 克隆项目到本地 
 
-<img src="/Users/jin/Library/Application Support/typora-user-images/image-20210423092936486.png" alt="image-20210423092936486" style="zoom:50%;" />
+<img src="Git笔记.assets/image-20210423092936486.png" alt="image-20210423092936486" style="zoom:50%;" />
 
 ```bash
 [root @ sora-localhost ~/dataTemp]  git clone git@github.com:Apotosome/git_data.git
