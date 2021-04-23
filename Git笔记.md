@@ -39,13 +39,13 @@
 
      集中式的版本控制系统,只有一个中央数据仓库,如果中央数据仓库挂了或者不可访问,所有的使用者无法使用SVN,无法进行提交或备份文件。
 
-     <img src="/Users/jin/Library/Application Support/typora-user-images/image-20210420234032436.png" alt="image-20210420234032436" style="zoom: 33%;" />
+     <img src="Git笔记.assets/image-20210420234032436.png" alt="image-20210420234032436" style="zoom:50%;" />
 
   2. Git 
 
      分布式的版本控制系统,在每个使用者电脑上就有一个完整的数据仓库,没有网络依然可以使用Git。当然为了习惯及团队协作,会将本地数据同步到Git服务器或者 Github等代码仓库。
 
-     <img src="/Users/jin/Library/Application Support/typora-user-images/image-20210420234105026.png" alt="image-20210420234105026" style="zoom:33%;" />
+     <img src="Git笔记.assets/image-20210420234102406.png" alt="image-20210420234102406" style="zoom:50%;" />
 
 
 
@@ -665,7 +665,7 @@ git push -u origin <master/分支名>		# 推送到远程仓库
 git clone  <SSH地址>								# 从远程仓库克隆到本地仓库
 ```
 
-![image-20210423151144898](Git笔记.assets/image-20210423151144898.png)
+
 
 # Git常见英文
 
