@@ -552,7 +552,7 @@ rm 'c'
 
 
 
-## 安装Gitlab
+## 安装配置 
 
 1. 下载链接  选择对应的系统类型
 
@@ -593,7 +593,7 @@ rm 'c'
 
    ```bash
    [root @ sora-localhost ~]  vim /etc/gitlab/gitlab.rb 
-         external_url 'http://10.200.9.92'   #修改为本机ip地址
+         external_url 'http://10.200.106.4'   #修改为本机ip地址
    ```
 
 6. 根据提示更改 运行服务前 输入指令 进行重新配置
@@ -602,13 +602,72 @@ rm 'c'
    [root @ sora-localhost ~]  gitlab-ctl reconfigure
    ```
 
-7. 启动Gitlab
+7. 启动Gitlab后查看状态
 
    ```bash
-   gitlab-ctl status
+   [root @ sora-localhost ~]  gitlab-ctl start
+   [root @ sora-localhost ~]  gitlab-ctl status
    ```
 
+8. 访问Gitlab
+
+   浏览器输入主机号即可访问   `http://10.200.106.4/`
+
+   首次访问时，您将被重定向到密码重置屏幕。提供初始管理员帐户的密码，您将被重定向回登录屏幕。使用默认帐户的用户名`root`登录。
+
    
+9. 安装汉化补丁
+
+    ```bash
+   # 1、下载汉化补丁
+   			git clone https://gitlab.com/xhang/gitlab.git 
+   # 2、査看全部分支版本
+   			git branch -a
+   # 3、对比版本、生成补丁包
+   			git diff remotes/origin/10-2-stable remotes/origin/10-2-stable-zh > ../10.2.2-zh diff 
+   # 4、停止服务器 
+    			gitlab-ctl stop 
+   # 5、打补丁
+      		patch -d /opt/gitlab/embedded/service/gitlab-rails -p1 < /tmp/10.2.2-zh diff 
+   # 6、启动和重新配置 
+   			gitlab-ctl start 
+    			gitlab-ctl reconfigure
+    ```
+
+   
+
+## 重要目录和指令
+
+- 重要目录
+
+```bash
+/opt/gitlab/								# git1ab的程序安装目录
+/var/opt/gitlab							# gitlab目录数据目录
+/var/opt/gitlab/git-data		# 存放仓库数据
+
+
+
+```
+
+- 重要指令
+
+```bash
+gitlab-ctl status						# 查看目前git1ab所有服务运维状态
+gitlab-ctl start						# 停止git1ab服务
+gitlab-ctl stop							# 停止git1ab服务
+gitlab-ctl stop nginx				# 单独停止某个服务
+gitlab-ctl tail							# 查看所有服务的日志
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
