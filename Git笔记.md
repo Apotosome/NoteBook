@@ -667,7 +667,7 @@ git clone  <SSH地址>								# 从远程仓库克隆到本地仓库
 
 ![image-20210423145629813](/Users/jin/Documents/Typora笔记库/Pic/Git笔记/image-20210423145629813.png)
 
-
+![image-20210423150821410](/Users/jin/Documents/Typora笔记库/Git笔记.assets/image-20210423150821410.png)
 
 # Git常见英文
 
