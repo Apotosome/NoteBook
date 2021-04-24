@@ -734,7 +734,7 @@ gitlab-ctl tail							# 查看所有服务的日志
 
 
 
-### master分支保护
+### 分支保护
 
 ``````bash
 [root @ dev ~/git_data]  git add .
@@ -772,6 +772,109 @@ gitlab-ctl tail							# 查看所有服务的日志
   进入项目-Setting-Repository-Protected branches
 
   <img src="Git笔记.assets/image-20210424153335677.png" alt="image-20210424153335677" style="zoom:67%;" />
+
+
+
+### 代码合并
+
+#### dev到master
+
+```bash
+[root @ dev ~/git_data]  echo "merge" >> merge.txt
+[root @ dev ~/git_data]  git add .
+[root @ dev ~/git_data]  git commit -m "newfile merge.txt from dev"
+```
+
+<img src="Git笔记.assets/image-20210424154847559.png" alt="image-20210424154847559" style="zoom:50%;" />
+
+- dev发起合并请求
+- 进入`dev`分支 点击`Create merge request`  填写合并请求信息  
+
+![image-20210424155254367](Git笔记.assets/image-20210424155254367.png)
+
+- 确认是`dev`到`master`的请求
+
+- `root`进行确认   进入项目-Merge request  点击`Merge`确认  
+
+  注意确认是否要删除分支
+
+  ![image-20210424160515960](Git笔记.assets/image-20210424160515960.png)
+
+
+
+#### master到dev
+
+```bash
+[root @ sora-localhost ~/data]  echo "merge2" > merge2.txt
+[root @ sora-localhost ~/data]  git add .
+[root @ sora-localhost ~/data]  git commit -m "newfile merge2.txt from root"
+[root @ sora-localhost ~/data]  git push -u origin master 
+```
+
+如果此时对`dev`进行推送是不冲突的 但是分支脱离主干是不被允许的！
+
+``````bash
+[root @ sora-localhost ~/data]  ll
+      -rw-r--r-- 1 root root  0 Apr 24 16:12 merge2.txt
+[root @ dev ~/git_data]  ll
+      -rw-r--r-- 1 root root  0 Apr 24 16:32 merge3.txt
+``````
+
+==解决==：
+
+1. 将分支删去 根据`master`重建分支 ; 无法执行推送指令 因为本地与远程冲突 
+
+```bash
+[root @ dev ~/git_data]  git branch -d dev
+[root @ sora-localhost ~/data]  ll
+      -rw-r--r-- 1 root root  0 Apr 24 16:12 merge2.txt
+[root @ dev ~/git_data]  git checkout -b dev  
+[root @ dev ~/git_data]  git pull
+			error: failed to push some refs to 'git@192.168.43.198:test/git_data.git'
+```
+
+2. 从远程仓库中拉取 保证本地仓库与其保持一致
+
+```bash
+[root @ dev ~/git_data]  git pull origin dev
+      Merge made by the 'recursive' strategy.
+       merge3.txt | 0
+[root @ dev ~/git_data]  ll
+      -rw-r--r-- 1 root root  0 Apr 24 16:32 merge2.txt
+      -rw-r--r-- 1 root root  0 Apr 24 16:43 merge3.txt
+```
+
+3. 远程仓库`master`没有 merge3.txt 则需要进行代码合并,即 dev到master
+
+   进入项目-Merge requests-`New merge request`
+
+   ![image-20210424165651699](Git笔记.assets/image-20210424165651699.png)
+
+4. root审阅合并请求并进行确认
+
+   此时master和dev相同  需要删掉dev 然后重新创建分支 防止出现错误
+
+   勾选 Delete source branch
+
+5. `dev`本地仓库进行拉取  本地仓库和远程仓库保持一致
+
+```bash
+[root @ sora-localhost ~/data]  git pull
+			merge3.txt | 0
+[root @ sora-localhost ~/data]  ll
+      -rw-r--r-- 1 root root  0 Apr 24 16:12 merge2.txt
+      -rw-r--r-- 1 root root  0 Apr 24 17:09 merge3.txt
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -827,6 +930,7 @@ git remote													# 查看远程地址
 git remote add origin <SSH地址>			# 添加远程仓库地址 名称为origin
 git remote rm  <本地仓库名>					# 删除远程地址
 git push -u origin <master/分支名>		# 推送到远程仓库
+git pull 														# 从远程获取代码并合并本地的版本
 git clone  <SSH地址>								# 从远程仓库克隆到本地仓库
 ```
 
