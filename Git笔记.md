@@ -479,7 +479,7 @@ rm 'c'
 
 
 
-# GItHub
+# GitHub
 
 ​		**Github**顾名思义是一个Git版本库的托管服务,是目前全球最大的软件仓库,拥有上百万的开发者用户,也是软件 开发和寻找资源的最佳途径, Github不仅可以托管各种Git版本仓库,还拥有了更美观的Mleb界面,您的代码文件可 以被任何人克隆,使得开发者为开源项贡献代码变得更加容易,当然也可以付费购买私有库,这样高性价比的私有 库真的是帮助到了很多团队和企业 
 
@@ -615,7 +615,6 @@ rm 'c'
 
    首次访问时，您将被重定向到密码重置屏幕。提供初始管理员帐户的密码，您将被重定向回登录屏幕。使用默认帐户的用户名`root`登录。
 
-   
 9. 安装汉化补丁
 
     ```bash
@@ -632,9 +631,24 @@ rm 'c'
    # 6、启动和重新配置 
    			gitlab-ctl start 
     			gitlab-ctl reconfigure
-    ```
+   ```
 
-   
+
+10. 基本配置
+
+    - 修改登陆界面提示文字和Logo
+
+      1. 进入🔧设置-Appearance
+
+      2. Navigation bar 导航栏
+
+         Sign in/Sign up pages 登录界面
+
+         Favicon 网站图标
+
+         ![image-20210424094610986](Git笔记.assets/image-20210424094610986.png)
+
+    
 
 ## 重要目录和指令
 
@@ -644,9 +658,6 @@ rm 'c'
 /opt/gitlab/								# git1ab的程序安装目录
 /var/opt/gitlab							# gitlab目录数据目录
 /var/opt/gitlab/git-data		# 存放仓库数据
-
-
-
 ```
 
 - 重要指令
@@ -661,9 +672,106 @@ gitlab-ctl tail							# 查看所有服务的日志
 
 
 
+## 基本操作
+
+### 创建操作
+
+`创建组-创建项目-创建成员`
+
+1. **创建组**
+
+   进入🔧设置-overview-Dashboard-New group			 `test`
+
+2. **创建项目**
+
+   进入🔧设置-overview-Dashboard-New project	 	  `test`
+
+   Create blank proiect   注意选择对应的组
+
+   ![image-20210424103123025](Git笔记.assets/image-20210424103123025.png)
+
+3. 配置SSH-keys 
+
+   ````bash
+   ssh-keygen -t rsa
+   # 无限回车 生成公钥
+   cat .ssh/id_rsa.pub
+   # 获取ssh-key 将其复制 
+   ````
+
+   复制到Preferences-SSH keys-Add key
+
+4. Push an existing Git repository
+
+   ```bash
+   [root @ sora-localhost ~/data]  git remote rm origin 
+   [root @ sora-localhost ~/data]  git remote add origin git@192.168.43.198:test/git_data.git
+   [root @ sora-localhost ~/data]  git push -u origin master
+   ```
+
+5. 安全性设置 开启/关闭注册页面
+
+   进入🔧设置-Setting-Sign-up restrictions
+
+   ![image-20210424134104371](Git笔记.assets/image-20210424134104371.png)
+
+6. **创建用户**
+
+   进入🔧设置-overview-Users-New user 完成用户的创建		`dev`
+
+   Edit-设置password
+
+7. 将`dev`用户加入`test`组
+
+   进入`test`组-Add user(s) to the group		注意权限的设定
+
+   <img src="Git笔记.assets/image-20210424135121270.png" alt="image-20210424135121270" style="zoom:67%;" />
+
+   <img src="Git笔记.assets/image-20210424135159299.png" alt="image-20210424135159299" style="zoom: 67%;" />
+
+8. 配置SSH Keys等操作同上
+9. 从远程仓库clone方法参见GitHub
 
 
 
+### master分支保护
+
+``````bash
+[root @ dev ~/git_data]  git add .
+[root @ dev ~/git_data]  git commit -m "newfile t2.txt from dev"
+[root @ dev ~/git_data]  git push -u origin master 
+      remote: GitLab: You are not allowed to push code to protected branches on this project.To git@192.168.43.198:test/git_data.git
+       ! [remote rejected] master -> master (pre-receive hook declined)
+      error: failed to push some refs to 'git@192.168.43.198:test/git_data.git'
+``````
+
+推送至master时出现错误：您不得将代码推送到该项目上受保护的分支！
+
+<img src="Git笔记.assets/image-20210424151413932.png" alt="image-20210424151413932" style="zoom:67%;" />
+
+- 正确应该推送到不同的工作分支上
+
+```bash
+[root @ dev ~/git_data]  git checkout -b dev
+			Switched to a new branch 'dev'
+[root @ dev ~/git_data]  git push -u origin dev
+      remote: 
+      To git@192.168.43.198:test/git_data.git
+       * [new branch]      dev -> dev
+      Branch dev set up to track remote branch dev from origin.
+```
+
+- 查看分支
+
+  <img src="Git笔记.assets/image-20210424152513547.png" alt="image-20210424152513547" style="zoom: 50%;" />
+
+
+
+- 设置分支保护
+
+  进入项目-Setting-Repository-Protected branches
+
+  <img src="Git笔记.assets/image-20210424153335677.png" alt="image-20210424153335677" style="zoom:67%;" />
 
 
 
