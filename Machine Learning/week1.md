@@ -83,7 +83,7 @@ D.None of the above-this is not a machine learning problem.
 
 我们假设您的电子邮件程序会观察收到的邮件是否被你标记为垃圾邮件。在这种**Email**客户端中，你点击“垃圾邮件”按钮，报告某些**Email**为垃圾邮件**spam**，不会影响别的邮件。基于被标记为垃圾的邮件，您的电子邮件程序能更好地学习如何过滤垃圾邮件。请问，在这个设定中，任务**T**是什么？
 
-```A.Classifying emails as spam or not spam.
+```
 [T]A.Classifying emails as spam or not spam.
 [E]B.Watching you label emails as spam or not spam
 [P]C.The number(or fraction )of emails correctly classified as spam/not spam
