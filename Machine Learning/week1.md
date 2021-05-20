@@ -355,9 +355,37 @@ $$
 
 ![](../images/10ba90df2ada721cf1850ab668204dc9.png)
 
+![image-20210520222257989](week1.assets/image-20210520222257989.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ![](../images/2c9fe871ca411ba557e65ac15d55745d.png)
 
-### 2.4 代价函数的直观理解II
+
+
+
+
+
+
+
+
+
+
+###  2.4 代价函数的直观理解II
 
 参考视频: 2 - 4 - Cost Function - Intuition II (9 min).mkv
 
