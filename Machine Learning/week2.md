@@ -116,7 +116,7 @@ $$
 - 代码示例：
 
   1. 计算代价函数
-     
+    
      $$
      J\left( \theta  \right)=\frac{1}{2m}\sum\limits_{i=1}^{m}{{{\left( {h_{\theta}}\left( {x^{(i)}} \right)-{y^{(i)}} \right)}^{2}}}
      $$
