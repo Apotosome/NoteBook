@@ -24,7 +24,7 @@
 - 负向类**negative class**
 - 正向类**positive class**
 
-则因变量$y\in { 0,1 \\}$ ，其中 0 表示负向类，1 表示正向类
+则因变量$y\in { 0,1 }$ ，其中 0 表示负向类，1 表示正向类
 
 ![image-20210525172520925](week3.assets/image-20210525172520925.png)
 
@@ -211,8 +211,8 @@ $$
 其中
 $$
 {Cost}\left(h_{\theta}(x), y\right)=\left\{\begin{aligned}
--\log \left(h_{\theta}(x)\right) & \ \ \ \text { if } y=1 \\
--\log \left(1-h_{\theta}(x)\right) & \ \ \ \text { if } y=0
+-\log (h_{\theta}(x)) & \ \ \ \text { if } y=1 \\
+-\log (1-h_{\theta}(x)) & \ \ \ \text { if } y=0
 \end{aligned}\right.
 $$
 ${h_\theta}\left( x \right)$与 $Cost\left( {h_\theta}\left( x \right),y \right)$之间的关系如下图所示：
@@ -245,8 +245,8 @@ ${h_\theta}\left( x \right)$与 $Cost\left( {h_\theta}\left( x \right),y \right)
 $$
 J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{{Cost}\left( {h_\theta}\left( {x}^{\left( i \right)} \right),{y}^{\left( i \right)} \right)}\\
 {Cost}\left(h_{\theta}(x), y\right)=\left\{\begin{aligned}
--\log \left(h_{\theta}(x)\right) & \ \ \ \text { if } y=1 \\
--\log \left(1-h_{\theta}(x)\right) & \ \ \ \text { if } y=0
+-\log (h_{\theta}(x)) & \ \ \ \text { if } y=1 \\
+-\log (1-h_{\theta}(x)) & \ \ \ \text { if } y=0
 \end{aligned}\right.\\
 \text {Note : y=0  or  1  always }
 $$
@@ -364,7 +364,7 @@ $$
 {h_\theta}\left( {{x}^{(i)}} \right)=\frac{1}{1+{{e}^{-{\theta^T}{{x}^{(i)}}}}}
 $$
 
-![无标题的笔记本 (1)-2-2012669](week3.assets/无标题的笔记本 (1)-2-2012669-2012699.jpg)
+![(1)-2-2012669-2012699](week3.assets/(1)-2-2012669-2012699.jpg)
 
 ​	注：虽然得到的梯度下降算法表面上看上去与线性回归的梯度下降算法一样，但是这里的${h_\theta}\left( x \right)=g\left( {\theta^T}X \right)$与线性回归中不同，所以实际上是不一样的。另外，在运行梯度下降算法之前，进行特征缩放依旧是非常必要的。
 
