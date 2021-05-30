@@ -259,11 +259,10 @@ $$
 $$
 J\left( \theta  \right)=\frac{1}{m}\sum\limits_{i=1}^{m}{[{-{y}^{(i)}}\log \left( {h_\theta}\left( {{x}^{(i)}} \right) \right)-\left( 1-{{y}^{(i)}} \right)\log \left( 1-{h_\theta}\left( {{x}^{(i)}} \right) \right)]}
 $$
-​	用向量表示：
+​	其中：
 $$
 h_\theta\left( x \right)=g(\theta^TX)\\
 g\left( z \right)=\frac{1}{1+{{e}^{-z}}}\\
-J\left( \theta  \right)=\frac{1}{m}{[{-{y}}·\log \left({h_\theta}\left( x \right)\right)-\left( 1-{{y}} \right)·\log \left( 1-{h_\theta}\left( x \right)) \right)]}
 $$
 
 - **Python**代码实现：
@@ -322,14 +321,6 @@ $$
 \text {(simultaneously update all)}
 $$
 
-​	用向量表示：
-$$
-\begin{array}{l}
-
-\qquad \theta := \theta - \alpha \frac{1}{m}(g(\theta^TX)-y)X^T
-
-\end{array}\\
-$$
 ​	所以，如果你有 $n$ 个特征，也就是说$\theta=\left[\begin{array}{c}\theta_{0} \\\theta_{1} \\\theta_{2} \\\cdots \\\theta_{n}\end{array}\right]$参数向量$\theta $包括${\theta_{0}}$ ${\theta_{1}}$ ${\theta_{2}}$ 一直到${\theta_{n}}$，那么你就需要用以上这个式子：来同时更新所有$\theta $的值。
 
 
