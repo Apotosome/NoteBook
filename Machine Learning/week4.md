@@ -1,8 +1,3 @@
-
-
-第4周
-=====
-
 [TOC]
 
 八、神经网络：表述(Neural Networks: Representation)
