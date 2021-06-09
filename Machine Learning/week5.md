@@ -84,7 +84,7 @@ $$
 
 ​	以一个例子来说明反向传播算法。![](week5.assets/2ea8f5ce4c3df931ee49cf8d987ef25d-2621723.png)
 
-​	假设我们的`训练集只有一个样本$(x,y)$`，我们的神经网络是一个四层的神经网络，其中$K=4，S_{L}=4，L=4$：
+​	假设我们的`训练集只有一个样本(x,y)`，我们的神经网络是一个四层的神经网络，其中$K=4，S_{L}=4，L=4$：
 
 - 前向传播算法
 
@@ -198,16 +198,16 @@ $$
       $$
       如果把$\Delta_{ij}$看作一个矩阵，$i,j$代表矩阵中的位置，那么该等式可以用向量的方式表示为
       $$
-      \Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}(a^{(l)})^T
+      \Delta^{(l)} := \Delta^{(l)} + (\delta^{(l+1)})^Ta^{(l)}
       $$
 
    6. 结束循环
 
-4. 根据$j$是否等于0来分两种情况计算
+4. 反向传播算法中应用`正则化`参数，根据$j$是否等于0来分两种情况计算
    $$
-   \begin{array}{l}
-   D_{i j}^{(l)}:=\frac{1}{m} \Delta_{i j}^{(l)}+\lambda \Theta_{i j}^{(l)} \qquad \text { if } {j \neq 0} \\
-   D_{i j}^{(l)}:=\frac{1}{m} \Delta_{i j}^{(l)} \qquad \qquad\qquad \text { if } {j = 0}
+   \begin{array}{ll}
+   \frac{\partial}{\partial \Theta_{i j}^{(l)}} J(\Theta)=D_{i j}^{(l)}=\frac{1}{m} \Delta_{i j}^{(l)} & \text { for } j=0 \\
+   \frac{\partial}{\partial \Theta_{i j}^{(l)}} J(\Theta)=D_{i j}^{(l)}=\frac{1}{m} \Delta_{i j}^{(l)}+\frac{\lambda}{m} \Theta_{i j}^{(l)} & \text { for } j \geq 1
    \end{array}
    $$
    当$j=0$时对应偏差项，因此没有加上额外的标准化项。
@@ -246,12 +246,12 @@ $$
 $$
 ​	我们可以认为$cost(i) ≈ (h_\Theta(x^{(i)})-y^{(i)})^2$  
 
-- $$\delta^{(l)}_{j}=\text {'error' of cost for }\ a^{(l)}_{j} \ \text{(unit j in layer }\ l)$$ 理解如下：
+- $\delta^{(l)}_{j}=\text {'error' of cost for }\ a^{(l)}_{j} \ \text{(unit j in layer }\ l)$ 理解如下：
 
-  1. $$\delta^{(l)}_{j}$$ 相当于是第 $$l$$ 层的第 $$j$$ 单元中得到的激活项的“误差”，即”正确“的 $$a^{(l)}_{j}$$与计算得到的 $a^{(l)}_{j}$ 的差。
+  1. $\delta^{(l)}_{j}$ 相当于是第 $$l$$ 层的第 $j$ 单元中得到的激活项的“误差”，即”正确“的 $a^{(l)}_{j}$与计算得到的 $a^{(l)}_{j}$ 的差。
 
-  2. 又因为 $$a^{(l)}_{j}=g(z^{(l)})$$ ，（$$g$$为sigmoid函数）。我们可以想象 $$\delta^{(l)}_{j}$$ 为函数求导时迈出的那一丁点微分。
-  3. 更准确的说 $$\delta^{(l)}_{j}=\frac{\partial}{\partial z^{(l)}_{j}}cost(i)$$
+  2. 又因为 $a^{(l)}_{j}=g(z^{(l)})$ ，（$g$为sigmoid函数）。我们可以想象 $\delta^{(l)}_{j}$ 为函数求导时迈出的那一丁点微分。
+  3. 更准确的说 $\delta^{(l)}_{j}=\frac{\partial}{\partial z^{(l)}_{j}}cost(i)$
 
 ​	由于函数的导数即是其切线的斜率，因此其切线越陡则说明计算的误差越大。每一个神经元的误差都与后面连接的神经元有关。
 
