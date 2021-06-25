@@ -1,6 +1,3 @@
-第2周
-=====
-
 [TOC]
 
 四、多变量线性回归(Linear Regression with Multiple Variables)
