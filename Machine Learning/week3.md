@@ -648,7 +648,7 @@ $$
 
 ```python
 import numpy as np
-def costReg(theta, X, y, learningRate):
+def costReg(theta, X, y, ≈):
     theta = np.matrix(theta)
     X = np.matrix(X)
     y = np.matrix(y)

@@ -232,12 +232,12 @@ $$
 ​	我们接下来将会使用这些关于向量内积的性质试图来理解支持向量机中的目标函数。
 $$
 \min _{\theta} \frac{1}{2} \sum_{i=1}^{n} \theta_{j}^{2} \\
-
-
-
+$$
+$$
 s.t.\quad \theta^Tx^{(i)}≥1 \quad \text{if} \  y^{(i)}=1 \\
 \quad \quad \quad\theta^Tx^{(i)}≤-1 \quad \text{if} \  y^{(i)}=0
 $$
+
 ​	这就是我们先前给出的支持向量机模型中的目标函数。为了讲解方便，我做一点简化，仅仅是为了让目标函数更容易被分析。
 
 - 忽略掉截距，令${{\theta }_{0}}=0$，这样更容易画示意图。
@@ -276,12 +276,14 @@ $$
 ​	即：
 $$
 \min _{\theta} \frac{1}{2} \sum_{i=1}^{n} \theta_{j}^{2} =\min _{\theta} \frac{1}{2}\left\| \theta \right\|^2\\
+$$
 
-
-
+$$
 s.t.\quad p^{(i)}\cdot{\left\| \theta \right\|}≥1 \quad \text{if} \  y^{(i)}=1 \\
 \quad \quad \quad \quad p^{(i)}\cdot{\left\| \theta \right\|}≤-1 \quad \text{if} \  y^{(i)}=0
 $$
+
+
 
 #### 12.4.3 选择决策界
 
