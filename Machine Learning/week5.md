@@ -45,7 +45,7 @@ $$
 
 $$
 \large{
-J(\Theta) = -\frac{1}{m} \left[ \sum\limits_{i=1}^{m} \sum\limits_{k=1}^{k} {y_k}^{(i)} \log {(h_\Theta(x^{(i)}))} + ( 1 - y_k^{(i)} ) \log \left( 1- {( h_\Theta ( x^{(i)} ) )} \right) \right] \\\qquad \qquad + \frac{\lambda}{2m} \sum\limits_{l=1}^{L-1} \sum\limits_{i=1}^{s_l} \sum\limits_{j=1}^{s_{l+1}} \left( \Theta_{ji}^{(l)} \right)^2}
+J(\Theta) = -\frac{1}{m} \left[ \sum\limits_{i=1}^{m} \sum\limits_{k=1}^{k} {y_k}^{(i)} \log {(h_\Theta(x^{(i)}))} + ( 1 - y_k^{(i)} ) \log \left( 1- {( h_\Theta ( x^{(i)} ) )} \right) \right] + \frac{\lambda}{2m} \sum\limits_{l=1}^{L-1} \sum\limits_{i=1}^{s_l} \sum\limits_{j=1}^{s_{l+1}} \left( \Theta_{ji}^{(l)} \right)^2}
 $$
 
 - 函数解释：
