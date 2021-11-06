@@ -30,7 +30,7 @@
 5. `Pythorch`(2018)
    - 去除图的机制
 
-![image-20211106133954678](Assets/TensorFlow框架原理/image-20211106133954678.png)
+![image-20211106134436346](Assets/TensorFlow框架原理/image-20211106134436346.png)
 
 6. `Tensorflow2.0`融入了 Eager模式,并正在通过推广 `Keras`约束API
 
@@ -38,7 +38,7 @@
 
 ## 宏观初探TF框架
 
-![image-20211106134006081](Assets/TensorFlow框架原理/image-20211106134006081.png)
+![image-20211106134441758](Assets/TensorFlow框架原理/image-20211106134441758.png)
 
 
 
@@ -85,10 +85,6 @@
 ### 计算图的表示——Graph
 
 用Op搭建模型的过程，实际上是在组装Graph，并没有被运行.
-
-![image-20211106134016388](Assets/TensorFlow框架原理/image-20211106134016388.png)
-
-
 
 ![image-20211106134232839](Assets/TensorFlow框架原理/image-20211106134232839.png)
 
