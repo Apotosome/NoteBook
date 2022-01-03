@@ -1,4 +1,4 @@
-# 异构框架的选择
+#  1 异构框架的选择
 
 - 如何训练一个模型? 没有脚手架,门槛会很高,你会很痛苦
   1. 设计模型,推导公式
@@ -17,7 +17,7 @@
 
   
 
-## 流行的深度学习异构框架
+## 1.1 流行的深度学习异构框架
 
 1. `Caffe` (2013)针对卷积神经网络设计的异构框架，通过堆叠layer搭建神经网络和training的流水线，但对于搭建NLP这类复杂的神经网络就显得不方便了。
 2. `TensorFlow`、`mxnet`(2015)对比caffe的区别：
@@ -36,17 +36,17 @@
 
 
 
-## 宏观初探TF框架
+## 1.2 宏观初探TF框架
 
 ![image-20211106134441758](Assets/TensorFlow框架原理/image-20211106134441758.png)
 
 
 
-# 环境准备与TF生态
+# 2 环境准备与TF生态
 
 
 
-## GPU和CUDA
+## 2.1 GPU和CUDA
 
 - GPU
   1. 专用计算设备
@@ -65,13 +65,13 @@
 
 
 
-# 静态图机制
+# 3 静态图机制
 
 模型定义与运行分离的机制
 
 
 
-## 编程模式抽象与Graph
+## 3.1 编程模式抽象与Graph
 
 类似于编译器，在TensorFlow层面将模型抽象成有向无环图DAG.
 
@@ -82,7 +82,7 @@
 
 
 
-### 计算图的表示——Graph
+### 3.1.1 计算图的表示
 
 用Op搭建模型的过程，实际上是在组装Graph，并没有被运行.
 
@@ -90,6 +90,65 @@
 
 
 
+#### 驱动计算图运行的Client—Session 
+
+计算图构建好之后,需要通过 Session对象驱动图的运行。
+
+`Session`会根据依赖关系,运行那些**必须**要执行的部分,忽略那些与此次计算毫无关系的部分。
+
+![image-20211106145114587](Assets/TensorFlow框架原理/image-20211106145114587.png)
+
+
+
+#### 在模型定义中声明数据占位符— Placeholder 
+
+为了能将**外部训练数据**送入模型,需要声明占位符,表示该位置的值由外部传入。
+
+![image-20211106145925023](Assets/TensorFlow框架原理/image-20211106145925023.png)
+
+
+
+#### 在模型定义中声明训练参数— Variable 
+
+模型训练的权值,需要用  tf.Variable 一族的API声明出来。
+
+```python
+b = tf.Variable(tf.zeros([100])
+w = tf.Variable(tf random.uniform([784, 100], -1, 1)
+```
+
+#### 串联Graph中多维数组—Tensor
+
+**参与运算的数据是 Tensor **(不是 Variable、Op等),它们在 Graph中用**箭头**表示。
+
+
+
+#### Variable与 Tensor生存周期
+
+![image-20211106151003022](Assets/TensorFlow框架原理/image-20211106151003022.png)
+
+
+
+### 3.1.2 Graph 机制
+
+Graph模式是构图和运行分离的模式，不能直接print Tensor不能获取其内容，只能print出元信息，比如shape,type等。
+
+Graph的引入是的TensorFlow成为专门用于描述模型定义的新编程语言，程序编译优化技术可以应用其中
+
+![image-20211106162056835](Assets/TensorFlow框架原理/image-20211106162056835.png)
+
+- 图信息的IR——`GraphDef`
+
+  ```python
+  tf.get_default_graph().as_graph_def()
+  ```
+
+  - node: Graph中的节点 
+  - op:该节点的类型 
+  - device:op的 placement.信息 
+  - attr:附属属性,dict类型
+
+   使其具有跨平台的能力.
 
 
 
@@ -99,10 +158,7 @@
 
 
 
-
-
-
-## 驱动Graph运行的Client——Session
+## 3.2 驱动Graph运行的Client——Session
 
 
 
